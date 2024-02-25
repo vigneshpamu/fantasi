@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRouter from './routes/user.route.js'
 import authRouter from './routes/auth.route.js'
-import listingRouter from './routes/listing.route.js'
+import vehicleRouter from './routes/vehicle.route.js'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import cors from 'cors'
@@ -12,14 +12,115 @@ import User from './models/user.model.js'
 import OrderModel from './models/order.model.js'
 import morgan from 'morgan'
 import crypto from 'crypto'
+import Vehicle from './models/vehicle.model.js'
+import nodemailer from 'nodemailer'
 const razorpay = new Razorpay({
   key_id: 'rzp_test_yoQ3nmI7J3LyOK',
   key_secret: 'V60RDhmjFRpwjNjZp7aOGaDo',
 })
+
 dotenv.config()
 mongoose
   .connect(process.env.MONGO)
   .then(() => {
+    const cars = [
+      {
+        index: 1,
+        make: 'Maruti Alto',
+        model: 'K10',
+        year: '2010',
+        capacity: 5,
+        availability: true,
+        cur_mileage: '24.39 - 24.9 kmpl',
+        img: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Maruti/Alto-K10/10331/1687349000534/front-left-side-47.jpg?tr=w-664',
+        rate: 1000,
+        engine: '998 cc',
+        torque: '82.1Nm',
+        fuel: 'CNG / Petrol',
+        transmission: 'Manual',
+        fuelCap: '55 Litres',
+        power: '55.92 - 65.71 bhp',
+      },
+      {
+        index: 2,
+        make: 'Renault',
+        model: 'KWID',
+        year: '2015',
+        rate: 1200,
+        capacity: 5,
+        availability: true,
+        cur_mileage: '21.46 - 22.3 kmpl',
+        img: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Renault/KWID/10076/1705905595853/front-left-side-47.jpg?tr=w-664',
+        engine: '999 cc',
+        torque: '91Nm',
+        fuel: 'Petrol',
+        transmission: 'Automatic / Manual',
+        fuelCap: '28 Litres',
+        power: '67.06 bhp',
+      },
+      {
+        index: 3,
+        make: 'Maruti',
+        model: 'S-Presso',
+        year: '2015',
+        rate: 1300,
+        capacity: 5,
+        availability: true,
+        cur_mileage: '24.12 - 25.3 kmpl',
+        img: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Maruti/S-Presso/10348/Maruti-S-Presso-LXi/1687519307943/front-left-side-47.jpg?tr=w-664',
+        engine: '998 cc',
+        torque: '89Nm - 82.1Nm',
+        fuel: 'CNG / Petrol',
+        transmission: 'Automatic / Manual',
+        fuelCap: '28 Litres',
+        power: '55.92 - 65.71 bhp',
+      },
+      {
+        index: 4,
+        make: 'Tata',
+        model: 'Nexon',
+        year: '2017',
+        rate: 1500,
+        capacity: 5,
+        availability: true,
+        cur_mileage: '17.01 - 24.08 kmpl',
+        img: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/Nexon/11104/1697698470038/front-left-side-47.jpg?tr=w-664',
+        engine: '1199 cc - 1497 cc',
+        torque: '170Nm',
+        fuel: 'Diesel',
+        transmission: 'Automatic / Manual',
+        fuelCap: '35 Litres',
+        power: '55.92 - 65.71 bhp',
+      },
+      {
+        index: 5,
+        make: 'Tata',
+        model: 'Punch',
+        year: '2017',
+        rate: 1700,
+        capacity: 4,
+        availability: true,
+        cur_mileage: '18.8 - 20.09 kmpl',
+        img: 'https://stimg.cardekho.com/images/carexteriorimages/630x420/Tata/Punch/10681/1691392713058/front-left-side-47.jpg?tr=w-664',
+        engine: '1199 cc - 1497 cc',
+        torque: '115Nm',
+        fuel: 'Petrol',
+        transmission: 'Automatic',
+        fuelCap: '37 Litres',
+        power: '72.41 - 86.63 bhp',
+      },
+    ]
+
+    // Vehicle.insertMany(cars)
+    //   .then(() => {
+    //     console.log('Dummy data inserted successfully')
+    //   })
+    //   .catch((err) => {
+    //     console.error('Error inserting dummy data:', err)
+    //   })
+    //   .finally(() => {
+    //     mongoose.disconnect() // Disconnect from MongoDB after inserting data
+    //   })
     console.log('Connected to MongoDB')
   })
   .catch((err) => {
@@ -39,10 +140,11 @@ app.listen(3003, () => {
 })
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
-app.use('/api/listing', listingRouter)
+// app.use('/api/listing', listingRouter)
+app.use('/api/vehicle', vehicleRouter)
 
 app.post('/api/payment/checkout', async (req, res) => {
-  const { name, amount, email } = req.body
+  const { name, amount, email, index, sDate, eDate, sTime, eTime } = req.body
   const user = await User.findOne({ email: email })
 
   try {
@@ -53,11 +155,18 @@ app.post('/api/payment/checkout', async (req, res) => {
       currency: 'INR',
     })
 
+    const item = await Vehicle.findOne({ index: index })
+
     await OrderModel.create({
       order_id: order.id,
       name: name,
       amount: newAmount,
       user: user._id,
+      vehicleId: item._id,
+      sDate,
+      eDate,
+      sTime,
+      eTime,
     })
 
     console.log(order)

@@ -5,11 +5,15 @@ import Home from './pages/Home'
 import SignIn from './pages/SignIn'
 import PrivateRoute from './components/PrivateRoute'
 import Profile from './pages/Profile'
-import CreateListing from './pages/CreateListing'
-import Events from './pages/Events'
-import Form from './pages/Form'
+
 import Success from './pages/Success'
 import Failed from './pages/Failed'
+import Upload from './pages/Upload'
+import Category from './pages/Category'
+import Car from './pages/Car'
+import Bike from './pages/Bike'
+import Details from './pages/Details'
+import About from './pages/About'
 
 export default function App() {
   return (
@@ -19,14 +23,19 @@ export default function App() {
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        {/* <Route path="/about" element={<About />} /> */}
+        <Route path="/about" element={<About />} />
         {/* <Route path="/search" element={<Search />} /> */}
         {/* <Route path="/listing/:listingId" element={<Listing />} /> */}
-        <Route path="/events" element={<Events />} />
+        {/* <Route path="/category" element={<Category />}>
+          <Route path="/car" element={<Car />} />
+        </Route> */}
+        <Route path="/category" element={<Category />} />
+        <Route path="/category/car" element={<Car />} />
+        <Route path="/details/:index" element={<Details />} />
+        <Route path="/category/bike" element={<Bike />} />
         <Route element={<PrivateRoute />}>
           <Route path="/profile" element={<Profile />} />
-          <Route path="/form" element={<Form />} />
-          <Route path="/create-listing" element={<CreateListing />} />
+          <Route path="/upload" element={<Upload />} />
           <Route path="/success" element={<Success />} />
           <Route path="/failed" element={<Failed />} />
           {/* <Route

@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 import { Link, useSearchParams } from 'react-router-dom'
 import html2canvas from 'html2canvas'
 import jsPDF from 'jspdf'
+
 const Success = () => {
   const { currentUser } = useSelector((state) => state.user)
   const [user, setUser] = useState()
@@ -24,6 +25,7 @@ const Success = () => {
 
   useEffect(() => {
     console.log(query.get('order_id'))
+    var dataF
     const fetchData = async () => {
       try {
         const response = await axios.post(
@@ -48,8 +50,23 @@ const Success = () => {
   }, [query])
 
   useEffect(() => {
-    console.log(order, 'Yes')
+    const ft = async () => {
+      if (order) {
+        const res = await axios.post(
+          'http://localhost:3003/api/user/send-email',
+          {
+            email: currentUser.email,
+            order_id: order.order_id,
+          }
+        )
+      }
+    }
+    ft()
+  }, [order])
+
+  useEffect(() => {
     if (order) {
+      console.log(order, 'Yes MF')
       const isoDate = order?.createdAt
       console.log(isoDate, 'Date')
       const formattedDate = convertDateFormat(order.createdAt)
@@ -97,7 +114,7 @@ const Success = () => {
                       alt="Flowbite Logo"
                     />
                     <h1 className="mt-2 text-lg md:text-xl font-semibold text-blue-600 dark:text-white">
-                      FANTASIES
+                      RENTAL
                     </h1>
                   </div>
                   {/* Col */}

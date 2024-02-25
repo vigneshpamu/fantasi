@@ -3,17 +3,19 @@ import {
   test,
   updateUser,
   deleteUser,
-  getUserListings,
   getUser,
+  upload,
+  sendEmail,
 } from '../controllers/user.controller.js'
 import { verifyToken } from '../utils/verifyUser.js'
 
 const router = express.Router()
 
 router.get('/test', test)
+router.post('/upload', upload)
 router.post('/update/:id', verifyToken, updateUser)
 router.delete('/delete/:id', verifyToken, deleteUser)
-router.get('/listings/:id', verifyToken, getUserListings)
 router.get('/:id', verifyToken, getUser)
+router.post('/send-email', sendEmail)
 
 export default router

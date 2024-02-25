@@ -22,6 +22,8 @@ import {
 } from '../redux/user/userSlice'
 import { app } from '../firebase'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import { newCar } from '@/data/vehiclesData'
 
 const Profile = () => {
   const fileRef = useRef(null)
@@ -41,7 +43,17 @@ const Profile = () => {
       handleFileUpload(file)
     }
   }, [file])
-
+  function extractCarData(names, data) {
+    return names
+      .map((nameObj) => {
+        const fullName = nameObj.name.split(' ') // Split full name into make and model
+        const make = fullName[0]
+        const model = fullName.slice(1).join(' ') // Join remaining parts as model
+        const car = data.find((car) => car.make === make && car.model === model)
+        return car ? car : null
+      })
+      .filter(Boolean)
+  }
   const handleFileUpload = (file) => {
     const storage = getStorage(app)
     const fileName = new Date().getTime() + file.name
@@ -129,18 +141,24 @@ const Profile = () => {
       dispatch(signOutUserFailure(error.message))
     }
   }
-
   const handleShowListing = async () => {
     try {
-      setShowListingError(false)
-      const res = await fetch(`/api/user/listings/${currentUser._id}`)
-      const data = await res.json()
-      if (data.success === false) {
-        setShowListingError(true)
-        return
-      }
-      setUserListings(data)
+      const response = await axios.post(
+        'http://localhost:3003/api/vehicle/get-my-order',
+        {
+          id: currentUser._id,
+        }
+      )
+      console.log(response.data, 'Yes')
+      // if (response.success === false) {
+      //   setShowListingError(true)
+      //   return
+      // }
+      // setUserListings(data)'
+      const extractedData = extractCarData(response.data, newCar)
+      console.log(extractedData, 'Final Data')
     } catch (error) {
+      console.error('Error fetching data:', error)
       setShowListingError(true)
     }
   }
@@ -180,11 +198,11 @@ const Profile = () => {
         />
         <input
           type="text"
-          placeholder="username"
-          defaultValue={currentUser.username}
+          placeholder="Name"
+          defaultValue={currentUser.name}
           className="border p-3 rounded-lg"
           onChange={handleChange}
-          id="username"
+          id="name"
         />
         <input
           type="email"
@@ -230,7 +248,7 @@ const Profile = () => {
         {/* {updateSuccess ? 'User is updated successfully!' : ''} */}
       </p>
       <button onClick={handleShowListing} className="text-green-700 w-full">
-        Show Event Orders
+        Show My Orders
       </button>
       <p className="text-red-700 mt-5">
         {/* {showListingError ? 'Error Showing Listings' : ''} */}
