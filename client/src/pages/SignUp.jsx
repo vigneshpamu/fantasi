@@ -40,7 +40,7 @@ const SignUp = () => {
         return
       }
       dispatch(signInSuccess(data))
-      navigate(`/upload?name=${data._id}`)
+      navigate(`/`)
     } catch (error) {
       dispatch(signInFailure(error.message))
     }

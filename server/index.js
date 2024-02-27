@@ -3,7 +3,7 @@ import mongoose from 'mongoose'
 import dotenv from 'dotenv'
 import userRouter from './routes/user.route.js'
 import authRouter from './routes/auth.route.js'
-import vehicleRouter from './routes/vehicle.route.js'
+// import vehicleRouter from './routes/vehicle.route.js'
 import cookieParser from 'cookie-parser'
 import path from 'path'
 import cors from 'cors'
@@ -12,7 +12,6 @@ import User from './models/user.model.js'
 import OrderModel from './models/order.model.js'
 import morgan from 'morgan'
 import crypto from 'crypto'
-import Vehicle from './models/vehicle.model.js'
 import nodemailer from 'nodemailer'
 const razorpay = new Razorpay({
   key_id: 'rzp_test_yoQ3nmI7J3LyOK',
@@ -141,7 +140,7 @@ app.listen(3003, () => {
 app.use('/api/user', userRouter)
 app.use('/api/auth', authRouter)
 // app.use('/api/listing', listingRouter)
-app.use('/api/vehicle', vehicleRouter)
+// app.use('/api/vehicle', vehicleRouter)
 
 app.post('/api/payment/checkout', async (req, res) => {
   const { name, amount, email } = req.body
