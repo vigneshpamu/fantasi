@@ -6,8 +6,8 @@ import React from 'react'
 export default function Home() {
   const meteors = new Array(50 || 20).fill(true)
   return (
-    <div className="h-[100vh] relative bg-slate-900 ">
-      {meteors.map((el, idx) => (
+    <div className="h-[93vh] mt-16 py-28 bg-slate-900 ">
+      {/* {meteors.map((el, idx) => (
         <span
           key={'meteor' + idx}
           className={cn(
@@ -21,7 +21,7 @@ export default function Home() {
             animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + 's',
           }}
         ></span>
-      ))}
+      ))} */}
       {/* <div className="relative flex items-center flex-row justify-between  h-full max-w-[1200px] py-5 mx-auto">
         <div>
           <p className="text-white  text-4xl font-semibold">Welcome To </p>
@@ -36,101 +36,63 @@ export default function Home() {
           <img src="/images/hero/hero2.png" className="w-[350px]" alt="" />
         </div>
       </div> */}
-      <div className="bg-slate-900 ">
-        <div className="bg-gradient-to-b from-violet-600/[.15] via-transparent">
-          <div className="max-w-[100%] mx-auto px-4 sm:px-6 lg:px-8 py-24 space-y-8">
-            {/* <!-- Announcement Banner --> */}
-            <div className="flex justify-center">
-              <a
-                className="group inline-block bg-white/[.05] hover:bg-white/[.1] border border-white/[.05] p-1 ps-4 rounded-full shadow-md"
-                href=""
+      <div className="max-w-[1200px] mx-auto flex items-center gap-20">
+        <div className="flex flex-col gap-6">
+          <p className="text-white text-2xl font-semibold">
+            Explore the City Your Way
+          </p>
+          <p className="text-white text-4xl font-semibold">
+            Rent Cars and Bikes by Hour
+          </p>
+          <p className="text-white text-xl">
+            Discover the freedom of flexible transportation with our hourly car
+            and bike rental service. Whether you're navigating the urban jungle
+            or exploring scenic routes, we offer convenient options tailored to
+            your schedule and preferences.
+          </p>
+          <div className="text-center flex items-c enter justify-ce nter flex-row gap-5">
+            <a
+              className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800"
+              href="/sign-up"
+            >
+              Register Now
+              <svg
+                className="flex-shrink-0 size-4"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinejoin="round"
               >
-                <p className="me-2 inline-block text-white text-sm">
-                  SITARA - Legacy Unfolded
-                </p>
-                <span className="group-hover:bg-white/[.1] py-1.5 px-2.5 inline-flex justify-center items-center gap-x-2 rounded-full bg-white/[.075] font-semibold text-white text-sm">
-                  <svg
-                    className="flex-shrink-0 size-4"
-                    width="16"
-                    height="16"
-                    viewBox="0 0 16 16"
-                    fill="none"
-                  >
-                    <path
-                      d="M5.27921 2L10.9257 7.64645C11.1209 7.84171 11.1209 8.15829 10.9257 8.35355L5.27921 14"
-                      stroke="currentColor"
-                      strokeWidth="2"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </span>
-              </a>
-            </div>
-            {/* <!-- End Announcement Banner --> */}
-
-            {/* <!-- Title --> */}
-            <div className="max-w-3xl text-center mx-auto">
-              <h1 className="block font-medium text-gray-200 text-4xl sm:text-5xl md:text-5xl lg :text-6xl">
-                Fantasies: Where Dreams Unfold
-              </h1>
-              <h1 className="block mt-5 font-medium text-gray-200 text-4xl sm:text-3xl ">
-                Ignite Your Passion at SIES College of Commerce and Economics
-              </h1>
-            </div>
-            {/* <!-- End Title --> */}
-
-            <div className="max-w-3xl text-center mx-auto">
-              <p className="text-lg text-gray-400">
-                Join us at Fantasies, SIES College's cultural fest, celebrating
-                25 years with the radiant theme "SITARA". Reflect on our
-                journey, embrace the present, and anticipate boundless
-                creativity ahead.
-              </p>
-            </div>
-
-            {/* <!-- Buttons --> */}
-            <div className="text-center flex items-center justify-center flex-row gap-5">
-              <a
-                className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800"
-                href="#"
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
+            <a
+              className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800"
+              href="/category"
+            >
+              Explore Cars
+              <svg
+                className="flex-shrink-0 size-4"
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                strokeLinejoin="round"
               >
-                Register Now
-                <svg
-                  className="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </a>
-              <a
-                className="inline-flex justify-center items-center gap-x-3 text-center bg-gradient-to-tl from-blue-600 to-violet-600 shadow-lg shadow-transparent hover:shadow-blue-700/50 border border-transparent text-white text-sm font-medium rounded-full focus:outline-none focus:ring-2 focus:ring-blue-600 focus:ring-offset-2 focus:ring-offset-white py-3 px-6 dark:focus:ring-offset-gray-800"
-                href="#"
-              >
-                Explore Events
-                <svg
-                  className="flex-shrink-0 size-4"
-                  xmlns="http://www.w3.org/2000/svg"
-                  width="24"
-                  height="24"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  strokeLinejoin="round"
-                >
-                  <path d="m9 18 6-6-6-6" />
-                </svg>
-              </a>
-            </div>
-            {/* <!-- End Buttons --> */}
+                <path d="m9 18 6-6-6-6" />
+              </svg>
+            </a>
           </div>
+        </div>
+        <div className="min-w-[500px]">
+          <img src="/images/hero/new.png" className="w-full h-auto" alt="" />
         </div>
       </div>
     </div>

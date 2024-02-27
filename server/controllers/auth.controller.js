@@ -4,12 +4,12 @@ import { errorHandler } from '../utils/error.js'
 import jwt from 'jsonwebtoken'
 
 export const signUp = async (req, res, next) => {
-  const { username, email, password } = req.body
+  const { name, email, password } = req.body
   const hashedPassword = bcryptjs.hashSync(password, 10)
-  const newUser = new User({ username, email, password: hashedPassword })
+  const newUser = new User({ name, email, password: hashedPassword })
   try {
     await newUser.save()
-    res.status(201).json('User Created Successfully')
+    res.status(201).json(newUser)
   } catch (error) {
     next(error)
   }
@@ -54,7 +54,7 @@ export const google = async (req, res, next) => {
         Math.random().toString(36).slice(-8)
       const hashedPassword = bcryptjs.hashSync(generatedPassword, 10)
       const newUser = new User({
-        username:
+        name:
           req.body.name.split(' ').join('').toLowerCase() +
           Math.random().toString(36).slice(-4),
         email: req.body.email,
