@@ -9,11 +9,9 @@ import Profile from './pages/Profile'
 import Success from './pages/Success'
 import Failed from './pages/Failed'
 import Upload from './pages/Upload'
-import Category from './pages/Category'
-import Car from './pages/Car'
-import Bike from './pages/Bike'
-import Details from './pages/Details'
 import About from './pages/About'
+import Events from './pages/Events'
+import Form from './pages/Form'
 
 export default function App() {
   return (
@@ -24,24 +22,14 @@ export default function App() {
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
         <Route path="/about" element={<About />} />
-        {/* <Route path="/search" element={<Search />} /> */}
-        {/* <Route path="/listing/:listingId" element={<Listing />} /> */}
-        {/* <Route path="/category" element={<Category />}>
-          <Route path="/car" element={<Car />} />
-        </Route> */}
-        <Route path="/category" element={<Category />} />
-        <Route path="/category/car" element={<Car />} />
-        <Route path="/details/:index" element={<Details />} />
-        <Route path="/category/bike" element={<Bike />} />
+        <Route path="/events" element={<Events />} />
+
         <Route element={<PrivateRoute />}>
+          <Route path="/form" element={<Form />} />
           <Route path="/profile" element={<Profile />} />
           <Route path="/upload" element={<Upload />} />
           <Route path="/success" element={<Success />} />
           <Route path="/failed" element={<Failed />} />
-          {/* <Route
-            path="/update-listing/:listingId"
-            element={<UpdateListing />}
-          /> */}
         </Route>
       </Routes>
     </BrowserRouter>

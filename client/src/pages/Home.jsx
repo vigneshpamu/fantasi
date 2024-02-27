@@ -36,7 +36,7 @@ export default function Home() {
           <img src="/images/hero/hero2.png" className="w-[350px]" alt="" />
         </div>
       </div> */}
-      <div className="max-w-[1200px] mx-auto flex items-center gap-20">
+      {/* <div className="max-w-[1200px] mx-auto flex items-center gap-20">
         <div className="flex flex-col gap-6">
           <p className="text-white text-2xl font-semibold">
             Explore the City Your Way
@@ -94,7 +94,7 @@ export default function Home() {
         <div className="min-w-[500px]">
           <img src="/images/hero/new.png" className="w-full h-auto" alt="" />
         </div>
-      </div>
+      </div> */}
     </div>
   )
 }

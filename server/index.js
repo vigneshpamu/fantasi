@@ -144,7 +144,7 @@ app.use('/api/auth', authRouter)
 app.use('/api/vehicle', vehicleRouter)
 
 app.post('/api/payment/checkout', async (req, res) => {
-  const { name, amount, email, index, sDate, eDate, sTime, eTime } = req.body
+  const { name, amount, email } = req.body
   const user = await User.findOne({ email: email })
 
   try {
@@ -155,18 +155,11 @@ app.post('/api/payment/checkout', async (req, res) => {
       currency: 'INR',
     })
 
-    const item = await Vehicle.findOne({ index: index })
-
     await OrderModel.create({
       order_id: order.id,
       name: name,
       amount: newAmount,
       user: user._id,
-      vehicleId: item._id,
-      sDate,
-      eDate,
-      sTime,
-      eTime,
     })
 
     console.log(order)
