@@ -24,6 +24,7 @@ const Form = () => {
     console.log(single[0])
     setMyData(single[0])
   }, [location.search])
+
   const { currentUser } = useSelector((state) => state.user)
   const CheckoutHandler = async (name, amount) => {
     const {
