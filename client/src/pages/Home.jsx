@@ -2,9 +2,29 @@ import { BoxesCore } from '@/components/aceternity/BoxesCore'
 import { cn } from '@/utils/cn'
 import clsx from 'clsx'
 import React from 'react'
+import { Swiper, SwiperSlide } from 'swiper/react'
+// Import Swiper styles
+import 'swiper/css'
 
 export default function Home() {
   const meteors = new Array(50 || 20).fill(true)
+  const image = [
+    {
+      img: '/images/hero/main/1.jpg',
+    },
+    {
+      img: '/images/hero/main/2.jpg',
+    },
+    {
+      img: '/images/hero/main/3.jpg',
+    },
+    {
+      img: '/images/hero/main/4.jpg',
+    },
+    {
+      img: '/images/hero/main/5.jpg',
+    },
+  ]
   return (
     <div className="h-[93vh] mt-16 py-28 bg-slate-900 ">
       {/* {meteors.map((el, idx) => (
@@ -95,6 +115,49 @@ export default function Home() {
           <img src="/images/hero/new.png" className="w-full h-auto" alt="" />
         </div>
       </div> */}
+      <div className="max-w-[1200px] flex flex-col gap-5 items-center justify-center text-white mx-auto">
+        <p className="flex items-center text-5xl font-semibold ">
+          FANTASIES : SITARA 2024
+        </p>
+        <p>An Extravaganza of Creativity, Passion, and Innovation</p>
+
+        <div className="max-w-[800px] h-[500px]">
+          <Swiper
+            spaceBetween={50}
+            slidesPerView={1}
+            autoplay
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log(swiper)}
+          >
+            {/* <SwiperSlide className="h-[400px] w-full bg-white text-black">
+              Slide 1
+            </SwiperSlide>
+            <SwiperSlide className="h-[400px] w-full bg-white text-black">
+              Slide 2
+            </SwiperSlide>
+            <SwiperSlide className="h-[400px] w-full bg-white text-black">
+              Slide 3
+            </SwiperSlide>
+            <SwiperSlide className="h-[400px] w-full bg-white text-black">
+              Slide 4
+            </SwiperSlide> */}
+            {image.map((item, index) => {
+              return (
+                <SwiperSlide
+                  key={index}
+                  className="h-[500px] w-full bg-white text-black"
+                >
+                  <img
+                    src={item.img}
+                    alt=""
+                    className="object-cover h-full w-full "
+                  />
+                </SwiperSlide>
+              )
+            })}
+          </Swiper>
+        </div>
+      </div>
     </div>
   )
 }
