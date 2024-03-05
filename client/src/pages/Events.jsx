@@ -60,13 +60,17 @@ const Events = () => {
                   key={index}
                   className="max-w-sm w-full lg:min-w-[930px] lg:flex"
                 >
-                  <Skeleton className="h-48 lg:h-auto l g:w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden">
-                    <div
-                      className="h-48 lg:h-auto min-w-[400px] lg: w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
-                      //   style="background-image: url('/img/card-left.jpg')"
-                      title="Woman holding a mug"
-                    ></div>
-                  </Skeleton>
+                  <div
+                    className="h-48 lg:h-60 min-w-[400px] lg: w-48 flex-none bg-cover rounded-t lg:rounded-t-none lg:rounded-l text-center overflow-hidden"
+                    //   style="background-image: url('/img/card-left.jpg')"
+                    title="Woman holding a mug"
+                  >
+                    <img
+                      src={item.img}
+                      alt=""
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
                   <div className="border-r border-b border-l border-gray-400 lg:border-l-0 lg:border-t lg:border-gray-400 bg-white rounded-b lg:rounded-b-none lg:rounded-r p-4 flex flex-col justify-between leading-normal">
                     <div className="mb-8">
                       <p className="text-sm text-gray-600 flex items-center">
