@@ -30,7 +30,7 @@ const Nav2 = ({ currentUser, currentUrl }) => {
   return (
     <>
       <div
-        className="fixed top-2 left-2 text-white text-3xl"
+        className="fixed top-7 left-4 text-red-900 text-3xl"
         onClick={() => setShowNav(true)}
       >
         <IoMenu />
@@ -85,7 +85,7 @@ const Nav2 = ({ currentUser, currentUrl }) => {
               className="relative w-full  flex items-center justify-center mx-auto "
             >
               <a
-                href="/events"
+                href="#"
                 className="text-xl block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 md:p-0 md:dark:hover:text-blue-500 dark:text-white dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent dark:border-gray-700"
               >
                 Events
@@ -138,22 +138,24 @@ const Nav2 = ({ currentUser, currentUrl }) => {
           {currentUser ? (
             // <Link to="/profile">
             <div className="relative">
-              <div onClick={() => setShow((val) => !val)}>
-                <img
-                  className="rounded-full h-7 w-7  cursor-pointer object-cover"
-                  src={currentUser?.avatar}
-                  alt="profile"
-                />
-              </div>
+              <Link to={'/profile'}>
+                <div>
+                  <img
+                    className="rounded-full h-7 w-7  cursor-pointer object-cover"
+                    src={currentUser?.avatar}
+                    alt="profile"
+                  />
+                </div>
+              </Link>
 
-              {show && (
+              {/* {show && (
                 <div className="absolute w-[120px] cursor-pointer flex flex-col items-center gap-2 right-2 top-10 bg-gray-100 p-2">
                   <Link to={'/profile'}>
                     <p>Profile</p>
                   </Link>
                   <p onClick={handleSignOut}>Sign Out</p>
                 </div>
-              )}
+              )} */}
             </div>
           ) : // </Link>
           currentUrl === 'sign-in' ? (

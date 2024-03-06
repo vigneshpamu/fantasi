@@ -58,7 +58,10 @@ const Events = () => {
     setMyResult(results)
   }, [])
   return (
-    <div className="mt- 16 min-h-[100vh] w-[100vw] bg-slate-900">
+    <div
+      className="mt- 16 min-h-[100vh] w-[100vw] bg-slate-900 bg-cover bg-center"
+      style={{ backgroundImage: `url('/images/hero/bg/hero.jpg')` }}
+    >
       {/* Search Bar */}
       <div className="max-w-[1200px] text-white mx-auto py-5">
         <div className="w-full relative">

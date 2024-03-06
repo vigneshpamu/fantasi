@@ -3,7 +3,10 @@ import { Link } from 'react-router-dom'
 
 const About = () => {
   return (
-    <div className="mt-16 bg-slate-900 h-[95vh] text-white">
+    <div
+      className="mt-1 6 bg-slate-900 h-[100vh] text-white bg-cover bg-center"
+      style={{ backgroundImage: `url('/images/hero/bg/hero.jpg')` }}
+    >
       <div className="max-w-[1200px] py-10  mx-auto">
         <p className="text-3xl mb-20 w-full text-center">About Us</p>
         <div className="">
@@ -13,7 +16,7 @@ const About = () => {
             journey into the realm of imagination, where students come together
             to bring their wildest dreams to life.
           </p>
-          <p className="text-xl mt-5 w-[70%]">
+          <p className="text-xl mt-5 w-[7 0%]">
             At Fantasies, our mission is to ignite passion, foster creativity,
             and build a sense of community through a diverse range of events and
             activities. We believe in the power of imagination to inspire,

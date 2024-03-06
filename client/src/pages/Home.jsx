@@ -5,6 +5,12 @@ import React from 'react'
 import { Swiper, SwiperSlide } from 'swiper/react'
 // Import Swiper styles
 import 'swiper/css'
+import {
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/ui/accordion'
 
 export default function Home() {
   const meteors = new Array(50 || 20).fill(true)
@@ -26,8 +32,12 @@ export default function Home() {
     },
   ]
   return (
-    <div className="h-[1100px] mt -16 py -28 bg-slate-900 ">
-      {/* {meteors.map((el, idx) => (
+    <>
+      <div
+        className="h-[1000px] bg-center bg-cover mt -16 py -28 bg-slate-900 "
+        style={{ backgroundImage: `url('/images/hero/bg/hero.jpg')` }}
+      >
+        {/* {meteors.map((el, idx) => (
         <span
           key={'meteor' + idx}
           className={cn(
@@ -42,7 +52,7 @@ export default function Home() {
           }}
         ></span>
       ))} */}
-      {/* <div className="relative flex items-center flex-row justify-between  h-full max-w-[1200px] py-5 mx-auto">
+        {/* <div className="relative flex items-center flex-row justify-between  h-full max-w-[1200px] py-5 mx-auto">
         <div>
           <p className="text-white  text-4xl font-semibold">Welcome To </p>
           <p className="text-white  text-5xl font-semibold">
@@ -56,7 +66,7 @@ export default function Home() {
           <img src="/images/hero/hero2.png" className="w-[350px]" alt="" />
         </div>
       </div> */}
-      {/* <div className="max-w-[1200px] mx-auto flex items-center gap-20">
+        {/* <div className="max-w-[1200px] mx-auto flex items-center gap-20">
         <div className="flex flex-col gap-6">
           <p className="text-white text-2xl font-semibold">
             Explore the City Your Way
@@ -115,12 +125,12 @@ export default function Home() {
           <img src="/images/hero/new.png" className="w-full h-auto" alt="" />
         </div>
       </div> */}
-      <div className="max-w-[1200px] flex flex-col gap-5 items-center justify-center text-white mx-auto">
-        <img src="/images/logo/logo.png" alt="" />
-        <p className="flex items-center text-5xl font-semibold ">25th YEAR</p>
+        <div className="max-w-[1200px] flex flex-col gap-5 items-center justify-center text-white mx-auto">
+          <img src="/images/logo/logo.png" alt="" />
+          <p className="flex items-center text-5xl font-semibold ">25th YEAR</p>
 
-        <div className="max-w-[800px] flex flex-col items-center h-[500px]">
-          {/* <Swiper
+          <div className="max-w-[800px] flex flex-col items-center h-[500px]">
+            {/* <Swiper
             spaceBetween={50}
             slidesPerView={1}
             autoplay
@@ -142,11 +152,89 @@ export default function Home() {
               )
             })}
           </Swiper> */}
-          <img src="/images/logo/sitara.png" className="" alt="" />
-          <p className="text-4xl font-semibold mt-8">SITARA LEGACY UNFOLDED</p>
-          <p></p>
+            <img src="/images/logo/sitara.png" className="" alt="" />
+            <p className="text-4xl font-semibold mt-8">
+              SITARA LEGACY UNFOLDED
+            </p>
+            <p></p>
+          </div>
         </div>
       </div>
-    </div>
+      <div className="!bg-slate-900 text-white py-20 mt -10">
+        <div className="max-w-[1200px] mx-auto">
+          <p className="text-3xl font-bold">FAQ </p>
+          <Accordion type="single" collapsible className="w-full">
+            <AccordionItem value="item-1">
+              <AccordionTrigger>
+                What is "Fantasies" and what makes it unique among college
+                fests?
+              </AccordionTrigger>
+              <AccordionContent>
+                "Fantasies" is an annual college fest at SIES College that
+                celebrates creativity, talent, and collaboration. What makes it
+                unique is its vibrant atmosphere, diverse range of events, and
+                the opportunity for students to showcase their skills in various
+                fields. How can students participate in "Fantasies" and showcase
+                their talents? Students can participate in "Fantasies" by
+                registering for events and competitions related to their
+                interests and talents. Whether it's performing arts, sports,
+                academic quizzes, or cultural showcases, there's something for
+                everyone to get involved in. What are the main attractions and
+                events planned for "Fantasies" this year? This year's
+                "Fantasies" will feature a dynamic lineup of events including
+                musical performances, dance competitions, theater productions,
+                sports tournaments, art exhibitions, and much more. Stay tuned
+                for the official event schedule!
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-2">
+              <AccordionTrigger>
+                Are there any special guest appearances or performances
+                scheduled for "Fantasies"?
+              </AccordionTrigger>
+              <AccordionContent>
+                Yes, "Fantasies" will host special guest appearances and
+                performances by renowned artists, celebrities, and industry
+                professionals. Keep an eye out for announcements regarding the
+                exciting lineup! How can students get involved in organizing and
+                volunteering for "Fantasies"? Students interested in organizing
+                and volunteering for "Fantasies" can join the organizing
+                committee or sign up for volunteer opportunities through the
+                college's official channels. Your support and enthusiasm are
+                greatly appreciated!
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-3">
+              <AccordionTrigger>
+                Are there any competitions or contests students can participate
+                in during "Fantasies"?
+              </AccordionTrigger>
+              <AccordionContent>
+                Absolutely! "Fantasies" offers a wide range of competitions and
+                contests spanning various categories such as music, dance,
+                drama, literature, sports, and more. Check out the event catalog
+                for details on how to register.
+              </AccordionContent>
+            </AccordionItem>
+            <AccordionItem value="item-4">
+              <AccordionTrigger>
+                Can you provide more information about the theme of this year's
+                "Fantasies"?
+              </AccordionTrigger>
+              <AccordionContent>
+                This year's theme for "Fantasies" is Sitara. It's an exciting
+                concept that will inspire creativity and imagination among
+                participants and attendees. Stay tuned for theme-related events
+                and decorations! What are the dates and timings for "Fantasies"
+                and how can students attend? "Fantasies" will take place from .
+                Students can attend by purchasing tickets or passes through the
+                college's official ticketing platform or at designated counters
+                on campus.
+              </AccordionContent>
+            </AccordionItem>
+          </Accordion>
+        </div>
+      </div>
+    </>
   )
 }
