@@ -5,6 +5,7 @@ import { useLocation } from 'react-router-dom'
 import { Link, useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 import Nav from './Nav'
+import Nav2 from './Nav2'
 const Header = () => {
   const { currentUser } = useSelector((state) => state.user)
   const [searchTerm, setSearchTerm] = useState('')
@@ -35,7 +36,7 @@ const Header = () => {
 
   return (
     <>
-      <Nav currentUrl={currentUrl} currentUser={currentUser} />
+      <Nav2 currentUrl={currentUrl} currentUser={currentUser} />
     </>
   )
 }

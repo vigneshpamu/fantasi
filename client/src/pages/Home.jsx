@@ -26,8 +26,8 @@ export default function Home() {
     },
   ]
   return (
-    <div className="h-[1200px] mt-16 py-28 bg-slate-900 ">
-      {meteors.map((el, idx) => (
+    <div className="h-[1100px] mt -16 py -28 bg-slate-900 ">
+      {/* {meteors.map((el, idx) => (
         <span
           key={'meteor' + idx}
           className={cn(
@@ -41,7 +41,7 @@ export default function Home() {
             animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + 's',
           }}
         ></span>
-      ))}
+      ))} */}
       {/* <div className="relative flex items-center flex-row justify-between  h-full max-w-[1200px] py-5 mx-auto">
         <div>
           <p className="text-white  text-4xl font-semibold">Welcome To </p>
@@ -143,7 +143,7 @@ export default function Home() {
             })}
           </Swiper> */}
           <img src="/images/logo/sitara.png" className="" alt="" />
-          <p className="text-6xl mt-8">SITARA LEGACY</p>
+          <p className="text-4xl font-semibold mt-8">SITARA LEGACY UNFOLDED</p>
           <p></p>
         </div>
       </div>
