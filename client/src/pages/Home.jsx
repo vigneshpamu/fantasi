@@ -26,8 +26,8 @@ export default function Home() {
     },
   ]
   return (
-    <div className="h-[93vh] mt-16 py-28 bg-slate-900 ">
-      {/* {meteors.map((el, idx) => (
+    <div className="h-[1200px] mt-16 py-28 bg-slate-900 ">
+      {meteors.map((el, idx) => (
         <span
           key={'meteor' + idx}
           className={cn(
@@ -41,7 +41,7 @@ export default function Home() {
             animationDuration: Math.floor(Math.random() * (10 - 2) + 2) + 's',
           }}
         ></span>
-      ))} */}
+      ))}
       {/* <div className="relative flex items-center flex-row justify-between  h-full max-w-[1200px] py-5 mx-auto">
         <div>
           <p className="text-white  text-4xl font-semibold">Welcome To </p>
@@ -116,31 +116,17 @@ export default function Home() {
         </div>
       </div> */}
       <div className="max-w-[1200px] flex flex-col gap-5 items-center justify-center text-white mx-auto">
-        <p className="flex items-center text-5xl font-semibold ">
-          FANTASIES : SITARA 2024
-        </p>
-        <p>An Extravaganza of Creativity, Passion, and Innovation</p>
+        <img src="/images/logo/logo.png" alt="" />
+        <p className="flex items-center text-5xl font-semibold ">25th YEAR</p>
 
-        <div className="max-w-[800px] h-[500px]">
-          <Swiper
+        <div className="max-w-[800px] flex flex-col items-center h-[500px]">
+          {/* <Swiper
             spaceBetween={50}
             slidesPerView={1}
             autoplay
             onSlideChange={() => console.log('slide change')}
             onSwiper={(swiper) => console.log(swiper)}
           >
-            {/* <SwiperSlide className="h-[400px] w-full bg-white text-black">
-              Slide 1
-            </SwiperSlide>
-            <SwiperSlide className="h-[400px] w-full bg-white text-black">
-              Slide 2
-            </SwiperSlide>
-            <SwiperSlide className="h-[400px] w-full bg-white text-black">
-              Slide 3
-            </SwiperSlide>
-            <SwiperSlide className="h-[400px] w-full bg-white text-black">
-              Slide 4
-            </SwiperSlide> */}
             {image.map((item, index) => {
               return (
                 <SwiperSlide
@@ -155,7 +141,10 @@ export default function Home() {
                 </SwiperSlide>
               )
             })}
-          </Swiper>
+          </Swiper> */}
+          <img src="/images/logo/sitara.png" className="" alt="" />
+          <p className="text-6xl mt-8">SITARA LEGACY</p>
+          <p></p>
         </div>
       </div>
     </div>
